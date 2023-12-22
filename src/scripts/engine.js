@@ -49,7 +49,7 @@ function countDown() {
 		if (state.values.remainingLives >= 1) {
 			alert('Fim da  partida! Pontuação atual: ' + state.values.result);
 			init();
-		} else if (state.values.remainingLives === 1) {
+		} else if (state.values.remainingLives === 0) {
 			playSound("game-over")
 			alert('Game Over! Fim de jogo! Pontuação total: ' + state.values.result);
 		}
