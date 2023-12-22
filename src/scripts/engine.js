@@ -12,35 +12,47 @@ const state = {
 		gameSpeed: 1000,
 		hitPosition: 0,
 		result: 0,
-		currentTime: 60,
-		lives: 3,
+		currentTime: null,
+		remainingLives: 3,
 	},
 
 	actions: {
-		countDownTimerId: setInterval(countDown, 1000),
+		countDownTimerId: null,
 	}
 };
 
-function playSound() {
-	let audio = new Audio("./src/audios/hit.m4a");
+function timer() {
+	state.values.currentTime = 30;
+	state.actions.countDownTimerId = setInterval(countDown, 1000);
+}
+
+function playSound(nomeAudio) {
+	let audio = new Audio("./src/audios/" + nomeAudio +".m4a");
 	audio.volume = 0.1;
 	audio.play();
 }
 
 function decreasesLives() {
-	state.values.lives--;
-	state.view.lives = state.values.lives;
+	state.values.remainingLives--;
+	state.view.lives.textContent = 'x' + state.values.remainingLives;
 }
 
 function countDown() {
 	state.values.currentTime--;
 	state.view.timeLeft.textContent = state.values.currentTime;
 
-	if (state.values.currentTime <= 0) { 
+	if (state.view.timeLeft.textContent === '0') { 
 		clearInterval(state.actions.countDownTimerId);
 		clearInterval(state.values.timerId);
 		decreasesLives();
-		alert('Fim da  partida! Pontuação atual: ' + state.values.result);
+
+		if (state.values.remainingLives >= 1) {
+			alert('Fim da  partida! Pontuação atual: ' + state.values.result);
+			init();
+		} else if (state.values.remainingLives === 1) {
+			playSound("game-over")
+			alert('Game Over! Fim de jogo! Pontuação total: ' + state.values.result);
+		}
 	}
 }
 
@@ -67,13 +79,14 @@ function addListenerHitBox() {
 				state.values.result++;
 				state.view.score.textContent = state.values.result;
 				state.values.hitPosition = null;
-				playSound();
+				playSound("hit");
 			}
 		});
 	});
 }
 
 function init() {
+	timer();
 	moveEnemy();
 	addListenerHitBox();
 }
