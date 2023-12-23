@@ -17,11 +17,13 @@
 - **Sistema de Pontuação**: Acompanhe sua pontuação à medida que progride no jogo e desafie seus amigos a superá-la, clique no quadrado que o Ralph se encontre
 
 ### Como Jogar
+1. Clique [aqui](https://joy-c1.github.io/detona-ralph-dio/) para abrir o jogo, ou siga os passos a seguir:
 
-1. Clone este repositório para sua máquina local.
-2. Abra o arquivo `index.html` em seu navegador web.
-3. Para pontuar, tente clicar em cima do inimigo antes que ele fuja.
-4. Se divirta e faça o máximo de pontos que conseguir antes que o tempo acabe!
+  * Clone este repositório para sua máquina local.
+  * Abra o arquivo `index.html` em seu navegador web.
+
+2. Para pontuar, tente clicar em cima do inimigo antes que ele fuja.
+3. Se divirta e faça o máximo de pontos que conseguir antes que o tempo acabe!
 
 ### Contribuição
 
